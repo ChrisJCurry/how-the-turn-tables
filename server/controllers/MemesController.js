@@ -3,6 +3,7 @@ import { Auth0Provider } from '@bcwdev/auth0provider'
 import { memesService } from '../services/MemesService'
 import { memesApi } from '../services/AxiosService'
 import { dbContext } from '../db/DbContext'
+import { quotesService } from '../services/QuotesService'
 
 export class MemesController extends BaseController {
   constructor() {
@@ -32,10 +33,15 @@ export class MemesController extends BaseController {
       // req.body.creatorId = req.userInfo.id
       const memeResults = await memesApi.get('')
       const rand = (Math.floor(Math.random() * 100))
+      const addQuotes = []
+      for (let i = 0; i < 4; i++) {
+        addQuotes.push(await memesService.createQuotes(memeResults.data.data.memes[rand].id))
+      }
       const meme = {
         name: memeResults.data.data.memes[rand].name,
         id: memeResults.data.data.memes[rand].id,
-        imgUrl: memeResults.data.data.memes[rand].url
+        imgUrl: memeResults.data.data.memes[rand].url,
+        quotes: addQuotes
       }
       console.log(rand)
       memesService.create(meme)
