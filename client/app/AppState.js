@@ -1,10 +1,17 @@
+import MemeCard from './Models/MemeCard.js'
+//import MemeQuotes from'./Models/MemeQuotes.js'
 import { EventEmitter } from './Utils/EventEmitter.js'
 import { isValidProp } from './Utils/isValidProp.js'
 
 class AppState extends EventEmitter {
   user = {}
   account = {}
-  values = []
+  meme = []
+  memeQuotes = []
+
+  // meme = [new MemeCard("title", "imgUrl")]
+
+  // quotes = [new MemeQuotes("quote")]
 }
 
 export const ProxyState = new Proxy(new AppState(), {
