@@ -5,6 +5,18 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+.background{
+  background-image: url("https://joesdaily.com/wp-content/uploads/2020/08/the-office-conference-room-interview-window-scaled.jpg");
+  background-size:cover;
+  background-repeat: none;
+  background-position: center;
+}
+
+
+.meme-card{
+  align-items: center;
+}
+
 :root {
   --blue: blue;
   --indigo: indigo;

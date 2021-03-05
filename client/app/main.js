@@ -1,9 +1,9 @@
 import { AuthController } from "./Controllers/AuthController.js";
-import ValuesController from "./Controllers/ValuesController.js";
+import MemeCardsController from "./Controllers/MemeCardsController.js";
 
 class App {
   authController = new AuthController();
-  valuesController = new ValuesController();
+  memeCardsController = new MemeCardsController();
 }
 
 window["app"] = new App();
