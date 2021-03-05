@@ -13,7 +13,7 @@ export class ValuesController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      return res.send(['value1', 'value2'])
+      return res.send(['value1', 'value25'])
     } catch (error) {
       next(error)
     }
