@@ -2,6 +2,7 @@ import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { memesService } from '../services/MemesService'
 import { memesApi } from '../services/AxiosService'
+import { dbContext } from '../db/DbContext'
 
 export class MemesController extends BaseController {
   constructor() {
@@ -22,6 +23,10 @@ export class MemesController extends BaseController {
   }
 
   async create(req, res, next) {
+    const memeCount = await dbContext.Memes.countDocuments()
+    if (memeCount >= 5) {
+      next()
+    }
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       // req.body.creatorId = req.userInfo.id
