@@ -13,6 +13,7 @@ export class MemesController extends BaseController {
       .get('/:id', this.getOneMeme)
       .post('', this.create)
       .put('/:memeId/quotes/', this.voteForQuote)
+      .put('/:memeId/comments/', this.postComment)
   }
 
   async getAll(req, res, next) {
@@ -21,6 +22,10 @@ export class MemesController extends BaseController {
     } catch (error) {
       next(error)
     }
+  }
+
+  async postComment(req, res, next, parentMemeId) {
+    await memesService.postComment(parentMemeId, req.body)
   }
 
   async getOneMeme(req, res, next) {

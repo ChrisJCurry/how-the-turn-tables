@@ -4,6 +4,11 @@ import { officeApi } from '../services/AxiosService'
 // import { memesApi } from './AxiosService.js'
 
 class MemesService {
+  async postComment(parentMemeId, body) {
+    // const currQuote = dbContext.Memes.findById(parentMemeId)
+    dbContext.Memes.findByIdAndUpdate(parentMemeId, body)
+  }
+
   async find(query = {}) {
     try {
       return await dbContext.Memes.find(query)
