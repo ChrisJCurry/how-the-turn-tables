@@ -9,10 +9,10 @@ export class MemesController extends BaseController {
     this.router
     // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .get('', this.getAll)
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/:id', this.getOneMeme)
       .post('', this.create)
       .put('/:memeId/quotes/', this.voteForQuote)
-      .use(Auth0Provider.getAuthorizedUserInfo)
   }
 
   async getAll(req, res, next) {
@@ -43,6 +43,7 @@ export class MemesController extends BaseController {
     const memeCount = await dbContext.Memes.countDocuments()
     if (memeCount >= 5) {
       next()
+      return
     }
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
