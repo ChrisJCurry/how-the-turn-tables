@@ -7,7 +7,7 @@
  */
 .background{
   background-image: url("https://joesdaily.com/wp-content/uploads/2020/08/the-office-conference-room-interview-window-scaled.jpg");
-  background-size:cover;
+  background-size:fixed;
   background-repeat: none;
   background-position: center;
 }

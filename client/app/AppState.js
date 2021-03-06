@@ -7,7 +7,7 @@ class AppState extends EventEmitter {
   user = {}
   account = {}
   meme = []
-  memeQuotes = []
+  //memeQuotes = []
 
   // meme = [new MemeCard("title", "imgUrl")]
 
