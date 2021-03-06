@@ -6,7 +6,7 @@ import { officeApi } from '../services/AxiosService'
 class MemesService {
   async postComment(parentMemeId, body) {
     // const currQuote = dbContext.Memes.findById(parentMemeId)
-    dbContext.Memes.findByIdAndUpdate(parentMemeId, body)
+    dbContext.Memes.findByIdAndUpdate(parentMemeId, body,{new:true})
   }
 
   async find(query = {}) {

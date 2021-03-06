@@ -13,7 +13,7 @@ export class MemesController extends BaseController {
       .get('/:id', this.getOneMeme)
       .post('', this.create)
       .put('/:memeId/quotes/', this.voteForQuote)
-      .put('/:memeId/comments/', this.postComment)
+      .put('/:memeId/comments', this.postComment)
   }
 
   async getAll(req, res, next) {
@@ -24,8 +24,8 @@ export class MemesController extends BaseController {
     }
   }
 
-  async postComment(req, res, next, parentMemeId) {
-    await memesService.postComment(parentMemeId, req.body)
+  async postComment(req, res, next) {
+    await memesService.postComment(req.params.memeId, req.body)
   }
 
   async getOneMeme(req, res, next) {
@@ -46,7 +46,7 @@ export class MemesController extends BaseController {
 
   async create(req, res, next) {
     const memeCount = await dbContext.Memes.countDocuments()
-    if (memeCount >= 5) {
+    if (memeCount >= 5000) {
       next()
       return
     }

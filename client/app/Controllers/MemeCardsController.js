@@ -8,7 +8,7 @@ function _draw() {
 
   memeCards.forEach(memeCard => template += memeCard.Template )
   document.getElementById("meme-card").innerHTML = template
-  //console.log(memeCards);
+
 }
 
 //Public
@@ -30,6 +30,16 @@ export default class MemeCardsController {
 
   async thumbsUp(quoteId, memeId){
     memeCardsService.thumbsUp(quoteId, memeId)
+
+  }
+
+  async comments(event, memeId){
+   event.preventDefault()
+   let form = event.target
+   let rawComment = {
+     content: form.content.value
+    }
+    memeCardsService.comments(memeId,rawComment)
   }
 
 }
