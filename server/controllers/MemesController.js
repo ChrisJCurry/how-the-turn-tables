@@ -25,7 +25,7 @@ export class MemesController extends BaseController {
   }
 
   async postComment(req, res, next) {
-    await memesService.postComment(req.params.memeId, req.body)
+    res.send(await memesService.postComment(req.params.memeId, req.body))
   }
 
   async getOneMeme(req, res, next) {
