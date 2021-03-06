@@ -3,6 +3,8 @@ export default class MemeCard {
     this.imgUrl = data.imgUrl,
     this.id = data._id || data.id,
     this.quotes = data.quotes
+    this.votes = data.vote
+
   }
 
   get Template() {
@@ -19,7 +21,8 @@ export default class MemeCard {
         let template = ""
         this.quotes.forEach(q => {
           template += /*html*/ `
-          <p>"${q.content}"</p><i class="fa fa-thumbs-o-up color" onclick ="app.memeCardsController.thumbsUp('${this.id}')" aria-hidden="true"></i>
+          <p>"${q.content}"</p><i class="fa fa-thumbs-o-up color" onclick ="app.memeCardsController.thumbsUp('${q.id}', '${this.id}')" aria-hidden="true"></i>
+          <p>Votes:${q.vote}</p>
           <br>
           `
         });

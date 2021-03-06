@@ -3,14 +3,16 @@ import MemeCard from "../Models/MemeCard.js";
 import { api } from "./AxiosService.js";
 
 class MemeCardsService {
-  async thumbsUp(id) {
-    let meme = ProxyState.meme.find(m => m.id === id)
-    meme.thumbsUp += 1
+  async thumbsUp(quoteId, memeId) {
+    let meme = ProxyState.meme.find(m => m.id === memeId)
+    //meme.quotes[id].votes += 1
+    let quote = meme.quotes.find(q=>q.id === quoteId)
+    quote.vote++
     try {
-      const res = await api.put('memes/' + id)
+      const res = await api.put('api/memes/'+ memeId+ '/quotes', meme)
       ProxyState.meme = ProxyState.meme
     } catch (error) {
-
+      console.error(error)
     }
   }
   constructor(){

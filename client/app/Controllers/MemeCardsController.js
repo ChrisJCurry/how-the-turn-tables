@@ -28,8 +28,8 @@ export default class MemeCardsController {
 
   }
 
-  async thumbsUp(id){
-    memeCardsService.thumbsUp(id)
+  async thumbsUp(quoteId, memeId){
+    memeCardsService.thumbsUp(quoteId, memeId)
   }
 
 }
