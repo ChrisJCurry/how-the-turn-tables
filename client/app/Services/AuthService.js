@@ -17,6 +17,7 @@ export const AuthService = Auth0Provider.initialize({
 })
 
 AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async() => {
+  console.log("auth")
   api.defaults.headers.authorization = AuthService.bearer
   ProxyState.user = AuthService.user
   await accountService.getAccount()
